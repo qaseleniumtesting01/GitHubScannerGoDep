@@ -1,0 +1,28 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- master
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- script: echo Hello, world!
+  displayName: 'Run a one-line script'
+
+- task: WhiteSource@20
+  inputs:
+    cwd: '$(System.DefaultWorkingDirectory)'
+    projectName: 'C3535347'
+    configuration: |
+      dependenciesOnly = true
+      log.level = debug
+      go.dependencyManager = dep
+      go.resolveDependencies = true
+      projectName = WST_1016
+      productName = WST_1016
+      includes = **/*.c **/*.cc **/*.cp **/*.cpp **/*.cxx **/*.go **/*.h **/*.hpp **/*.hxx **/*.m **/*.mm  **/*.js **/*.php **/*.jar **/*.gem **/*.rb **/*.dll **/*.cs **/*.c#  **/*.csharp  **/*.tgz **/*.deb **/*.gzip **/*.rpm **/*.tar.bz2 **/*.tar.gz **/*.tar.xz **/*.egg **/*.whl **/*.py **/*.a **/*.f
+      excludes = **/*sources.jar **/*javadoc.jar
