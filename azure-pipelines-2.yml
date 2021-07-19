@@ -16,7 +16,7 @@ steps:
 - task: WhiteSource@20
   inputs:
     cwd: '$(System.DefaultWorkingDirectory)'
-    projectName: 'C3535347'
+    projectName: 'C3535344'
     configuration: |
       dependenciesOnly = true
       log.level = debug
